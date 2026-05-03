@@ -1,3 +1,9 @@
+'''
+Designed by: Byt3h
+Description: 用于模仿著名工具NetCat
+Refer: 参考《Python黑帽子》一书
+'''
+
 import argparse
 import shlex
 import socket
@@ -36,7 +42,7 @@ class NetcatReplacer:
                         break
 
                 if response:
-                    print(response)
+                    print("接收到: " + response)
                     buffer = input('>')
                     buffer += '\n'
                     self.socket.send(buffer.encode())
@@ -98,7 +104,7 @@ def execute(cmd):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description = "Net工具",
+        description = "Netcat工具",
         formatter_class = argparse.RawDescriptionHelpFormatter,
         epilog = textwrap.dedent('''
         Example:
