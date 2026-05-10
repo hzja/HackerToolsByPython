@@ -5,9 +5,10 @@ import sys
 import threading
 
 CWD = os.path.dirname(os.path.realpath(__file__))
-HOSTKEY = paramiko.RSAKey(filename=os.path.join((CWD, "test_rsa.key"))
+HOSTKEY = paramiko.RSAKey(filename=os.path.join(CWD, "test_rsa.key"))
+#这里的密钥文件可以使用ssh生成的密钥，然后替换即可
 
-Class Server(paramiko.ServerInterface):
+class Server(paramiko.ServerInterface):
 	def __init__(self):
 		self.event = threading.Event()
 		
@@ -15,11 +16,11 @@ Class Server(paramiko.ServerInterface):
 		if kind == "session":
 			return paramiko.OPEN_SUCCEEDED
 		return paramiko.OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED
-		
+
 	def check_auth_password(self, username, password):
-		if (username == "tim") and (password == "sekret"):
-            return paramiko.AUTH_SUCCESSFUL
-            
+            if (username == "tim") and (password == "sekret"):
+                return paramiko.AUTH_SUCCESSFUL
+
 if __name__ =="__main__":
     server = "192.168.223.128"
     ssh_port = 22
