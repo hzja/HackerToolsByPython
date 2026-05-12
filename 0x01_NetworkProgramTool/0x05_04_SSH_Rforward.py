@@ -1,6 +1,7 @@
 """
 author: Byt3h
 refer: python黑帽子
+备注: 这个程序暂时无法成功执行操作
 """
 
 import paramiko
