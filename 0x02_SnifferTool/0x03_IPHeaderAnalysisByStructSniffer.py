@@ -69,7 +69,7 @@ def sniff(Host):
 
     try:
         while True:
-            #读一packet
+            #读取包的内容
             raw_buffer = Sniffer.recvfrom(65535)[0]
 
             #从初始的20字节创建一个IP头
@@ -87,7 +87,7 @@ def sniff(Host):
                 print(f"版本:{ip_header.ver}")
                 print(f"头长度：{ip_header.ihl} TTL:{ip_header.ttl}")
                 
-                # 计算ICMP包从哪里开始
+                # 计算ICMP包从哪里开始，IP头的长度是基于IP头中的ihl字段计算的，该字段
                 offset = ip_header.ihl * 4
                 buf = raw_buffer(offset : offset + 8)
                 # 创造ICMP结构
